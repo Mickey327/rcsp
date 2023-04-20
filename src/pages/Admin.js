@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Auth = () => {
+const Admin = () => {
     return (
         <div>
-            Auth page
+            Admin Page
         </div>
     );
 };
 
-export default Auth;
+export default Admin;
