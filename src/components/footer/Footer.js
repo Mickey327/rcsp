@@ -7,7 +7,7 @@ function Footer(props) {
     return (
         <div className="container-fluid footer-back">
             <div className="container-xxl">
-                <footer className="py-5">
+                <footer className="py-3">
                     <div className="row">
                         <div className="col-xl-2 col-12 mb-md-0 mb-3">
                             <h5 className="text-muted">Полезное</h5>
@@ -46,7 +46,7 @@ function Footer(props) {
                     </div>
 
                     <div className="d-flex justify-content-between py-4 my-4 border-top">
-                        <p className="text-white">&copy; 2021 Gametrade, Inc. All rights reserved.</p>
+                        <p className="text-white">&copy; 2023 Gametrade, Inc. All rights reserved.</p>
                         <ul className="list-unstyled d-flex">
                             <li className="ms-3"><a className="link-dark" href="https://twitter.com"><img
                                 src={twitter} alt="logo" width="36" height="36"

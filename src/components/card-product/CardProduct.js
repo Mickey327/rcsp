@@ -1,19 +1,20 @@
 import './CardItem.css'
+import {Col, Image, Button, Card} from "react-bootstrap";
 function CardProduct({image, card}) {
     return (
-        <div className="col">
-            <div className="card h-100 product-info">
-                <img src={image} className="card-img-left product-image" alt="..."/>
-                <div className="card-body">
-                    <h5 className="card-title product-name">{card.name}</h5>
-                    <p className="card-text d-xl-block d-none">{card.description}</p>
-                    <div className="button-card-position d-inline">
-                        <button className="btn btn-primary me-2 add-button">Купить</button>
+        <Col>
+            <Card className="h-100">
+                <Image src={image} className="card-img-left" alt="..."></Image>
+                <Card.Body>
+                    <Card.Title>{card.name}</Card.Title>
+                    <Card.Text>{card.description}</Card.Text>
+                    <div className="d-inline">
+                        <Button variant="primary" className="me-2">Купить</Button>
                         <span className="text-black"> <span className="text-black price">{card.price} &#8381;</span> / 1 шт.</span>
                     </div>
-                </div>
-            </div>
-        </div>
+                </Card.Body>
+            </Card>
+        </Col>
     );
 }
 

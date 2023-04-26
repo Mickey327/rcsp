@@ -1,14 +1,14 @@
 import './App.css';
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/app-router/AppRouter";
-import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import CustomNavbar from "./components/navbar/Navbar";
 
 function App() {
     return (
         <div>
             <BrowserRouter>
-                <Navbar/>
+                <CustomNavbar/>
                 <AppRouter/>
                 <Footer/>
             </BrowserRouter>
