@@ -5,10 +5,11 @@ import './Navbar.css';
 import {observer} from "mobx-react-lite";
 import {useDispatch, useSelector} from "react-redux";
 import Button from 'react-bootstrap/Button';
-import {auth, unAuth} from "../../reducers/usersSlice";
+import {auth, increment, unAuth} from "../../reducers/usersSlice";
 
 function Navbar() {
     const isAuth = useSelector(state => state.users.isAuth)
+    const counter = useSelector(state => state.users.count)
     const dispatch = useDispatch()
     console.log("Is user authenticated:" + isAuth)
     return (
@@ -31,6 +32,10 @@ function Navbar() {
                             <Button onClick={() => {dispatch(auth())}}>Войти</Button>
                         </NavbarList>
                     }
+                    <div className="d-inline-flex justify-content-between">
+                        <p className="m-2">Значение счётчика: {counter}</p>
+                        <Button onClick={() => {dispatch(increment())}}>Увеличить счётчик через redux</Button>
+                    </div>
                 </nav>
             </div>
         </div>

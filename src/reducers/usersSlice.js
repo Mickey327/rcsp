@@ -4,6 +4,7 @@ const usersSlice = createSlice({
     name: "users",
     initialState: {
         isAuth: false,
+        count: 0,
     },
     reducers : {
         auth(state) {
@@ -11,9 +12,12 @@ const usersSlice = createSlice({
         },
         unAuth(state) {
             state.isAuth = false
-        }
+        },
+        increment(state) {
+            state.count++
+        },
     }
 })
 
 export default usersSlice.reducer
-export const {auth, unAuth} = usersSlice.actions
+export const {auth, unAuth, increment} = usersSlice.actions

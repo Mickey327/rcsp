@@ -1,7 +1,7 @@
 import twitter from '../../assets/twitter_circle_logo.svg'
 import instagram from '../../assets/inst_circle_logo.svg'
 import youtube from '../../assets/youtube_circle_logo.svg'
-import "./Footer.css"
+import './Footer.css'
 
 function Footer(props) {
     return (
