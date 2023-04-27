@@ -1,5 +1,6 @@
 import './CardItem.css'
 import {Col, Image, Button, Card} from "react-bootstrap";
+//TODO: check how to make image as a card property and work it correctly
 function CardProduct({image, card}) {
     return (
         <Col>

@@ -3,6 +3,7 @@ import instagram from '../../assets/inst_circle_logo.svg'
 import youtube from '../../assets/youtube_circle_logo.svg'
 import './Footer.css'
 
+//TODO: refactor to Bootstrap components
 function Footer(props) {
     return (
         <div className="container-fluid footer-back">
