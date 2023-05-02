@@ -1,14 +1,18 @@
 import React from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
-import {authRoutes, publicRoutes} from "../../routes";
-import {SHOP_ROUTE} from "../../ulits/consts";
+import {adminRoutes, publicRoutes, userRoutes} from "../../routes";
+import {SHOP_ROUTE} from "../../utils/consts";
 import {useSelector} from "react-redux";
 const AppRouter = () => {
     const isAuth = useSelector(state => state.users.isAuth)
-    console.log("AppRouter isAuth:" + isAuth)
+    const role = useSelector(state => state.users.role)
+
     return (
         <Routes>
-            {isAuth && authRoutes.map(({path, Element}) =>
+            {isAuth && role === 'admin' && adminRoutes.map(({path, Element}) =>
+                <Route key={path} path={path} element={<Element/>} exact></Route>
+            )}
+            {isAuth && role === 'user' && userRoutes.map(({path, Element}) =>
                 <Route key={path} path={path} element={<Element/>} exact></Route>
             )}
             {publicRoutes.map(({path, Element}) =>

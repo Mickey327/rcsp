@@ -1,6 +1,6 @@
 import logo from "../../logo.svg";
 import {NavLink} from "react-router-dom";
-import {SHOP_ROUTE} from "../../ulits/consts";
+import {SHOP_ROUTE} from "../../utils/consts";
 import {Image, NavbarBrand} from "react-bootstrap";
 
 

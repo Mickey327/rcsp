@@ -57,7 +57,7 @@ const FAQ = () => {
                     </Col>
                 </Row>
                 <p className="fs-4 text-white faq-text">
-                    <span>Последнее обновление: 4 декабря 2021 г.</span>
+                    <span>Последнее обновление: 2 мая 2023 г.</span>
                 </p>
                 <Accordion defaultActiveKey="0">
                     {tabs.map(tab => (

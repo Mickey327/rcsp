@@ -1,16 +1,18 @@
-import './App.css';
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/app-router/AppRouter";
-import Footer from "./components/footer/Footer";
+import CustomFooter from "./components/footer/CustomFooter";
 import CustomNavbar from "./components/navbar/Navbar";
+import {Container} from "react-bootstrap";
 
 function App() {
     return (
         <div>
             <BrowserRouter>
-                <CustomNavbar/>
-                <AppRouter/>
-                <Footer/>
+                <div className="App bg-dark">
+                    <CustomNavbar/>
+                    <AppRouter/>
+                    <CustomFooter/>
+                </div>
             </BrowserRouter>
         </div>
     );

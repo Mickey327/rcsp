@@ -1,23 +1,29 @@
 import Admin from "./pages/Admin";
 import {
     ADMIN_ROUTE,
-    CART_ROUTE,
+    CART_ROUTE, CHECKOUT_ROUTE,
     FAQ_ROUTE,
     LOGIN_ROUTE,
     PRODUCT_ROUTE,
     REGISTRATION_ROUTE,
     SHOP_ROUTE
-} from "./ulits/consts";
+} from "./utils/consts";
 import Cart from "./pages/Cart";
 import Auth from "./pages/Auth";
 import FAQ from "./pages/FAQ";
 import Shop from "./pages/Shop";
 import Product from "./pages/Product";
-
-export const authRoutes = [
+import Checkout from "./pages/Checkout";
+export const adminRoutes = [
     {
         path: ADMIN_ROUTE,
         Element: Admin
+    },
+]
+export const userRoutes = [
+    {
+        path: CHECKOUT_ROUTE,
+        Element: Checkout
     },
     {
         path: CART_ROUTE,
