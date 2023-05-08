@@ -4,9 +4,9 @@ import {Col, Container, Nav, Row} from "react-bootstrap";
 //TODO: refactor to Bootstrap components
 function CustomFooter() {
     return (
-        <Container fluid className="footer-back mt-auto">
+        <Container fluid className="mt-auto">
             <Container fluid="xxl">
-                <footer className="py-3">
+                <footer className="mt-3 py-2 border-top">
                     <Row>
                         <Col xl="2" className="mb-md-0 mb-3">
                             <h5 className="text-muted">Полезное</h5>
