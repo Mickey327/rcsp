@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {ListGroup, ListGroupItem} from "react-bootstrap";
-import {setSelectedCompany} from "../reducers/productsSlice";
+import {setSelectedCompany} from "../../reducers/productsSlice";
 
 const Companybar = () => {
     const companies = useSelector(state => state.products.companies)

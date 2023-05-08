@@ -2,7 +2,7 @@
     white-space: nowrap;
 }
 .card{
-    border: 0px !important;
+    border: 0 !important;
     border-radius: 20px !important;
 }
 .card-body{
