@@ -26,29 +26,6 @@ function CustomFooter() {
                 </footer>
             </Container>
         </Container>
-        // <div className="container-fluid footer-back">
-        //     <div className="container-xxl">
-        //         <footer className="py-3">
-        //             <div className="row">
-        //                 <div className="col-xl-2 col-12 mb-md-0 mb-3">
-        //                     <h5 className="text-muted">Полезное</h5>
-        //                     <ul className="nav flex-column">
-        //                         <li className="nav-item mb-2"><a href="#"
-        //                                                          className="nav-link p-0 text-white">Главная</a></li>
-        //                         <li className="nav-item mb-2"><a href="#"
-        //                                                          className="nav-link p-0 text-white">Каталог</a></li>
-        //                         <li className="nav-item mb-2"><a href="#"
-        //                                                          className="nav-link p-0 text-white">FAQ</a></li>
-        //                     </ul>
-        //                 </div>
-        //             </div>
-        //
-        //             <div className="d-flex justify-content-between py-4 my-4 border-top">
-        //                 <p className="text-white">&copy; 2023 Gametrade, Inc. All rights reserved.</p>
-        //             </div>
-        //         </footer>
-        //     </div>
-        // </div>
     );
 }
 

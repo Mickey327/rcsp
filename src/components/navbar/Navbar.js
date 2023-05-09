@@ -12,7 +12,8 @@ import {ADMIN_ROUTE, CART_ROUTE, LOGIN_ROUTE} from "../../utils/consts";
 function CustomNavbar() {
     //const isAuth = useSelector(state => state.users.isAuth)
     //const currentRole = useSelector(state => state.users.role)
-    const currentRole = "admin"
+    const cartCount = 0
+    const currentRole = "user"
     const isAuth = true
     const navigate = useNavigate()
     //const dispatch = useDispatch()
@@ -34,7 +35,7 @@ function CustomNavbar() {
                         :
                         isAuth ?
                             <div>
-                                <Button className="me-2" variant={"outline-light"} onClick={() => navigate(CART_ROUTE)}>Корзина</Button>
+                                <Button className="me-2" variant={"outline-light"} onClick={() => navigate(CART_ROUTE)}>Корзина {cartCount}</Button>
                                 <Button variant={"outline-light"} onClick={() => navigate(LOGIN_ROUTE)}>Выйти</Button>
                             </div>
                             :
