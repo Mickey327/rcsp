@@ -1,0 +1,20 @@
+.price{
+    white-space: nowrap;
+}
+.card{
+    border: 0 !important;
+    border-radius: 20px !important;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+.card-img-left{
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+.card-title{
+    display: flex;
+    align-items: center;
+}
