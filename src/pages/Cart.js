@@ -24,7 +24,7 @@ const Cart = () => {
                                <h5 className="mb-4">Корзина (<span>{cartProducts.length}</span> товара)</h5>
 
                                {cartProducts.map(product =>
-                                   <Row className="mb-4">
+                                   <Row id={product.id} className="mb-4">
                                        <Col md={4} xl={2} lg={2}>
                                            <div className="mb-3 mb-md-0">
                                                <Image className="img-fluid w-100" src={product.picture}></Image>

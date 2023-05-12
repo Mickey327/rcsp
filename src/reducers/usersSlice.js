@@ -3,6 +3,8 @@ import {createSlice} from "@reduxjs/toolkit";
 const usersSlice = createSlice({
     name: "users",
     initialState: {
+        id: 0,
+        email: "",
         isAuth: false,
         count: 0,
         role: "guest",
@@ -56,21 +58,23 @@ const usersSlice = createSlice({
     reducers : {
         auth(state) {
             state.isAuth = true
-            state.role = "user"
         },
-        authAdmin(state) {
-            state.isAuth = true
-            state.role = "admin"
+        setUserRole(state, action) {
+            state.role = action.payload
+        },
+        setUserEmail(state, action) {
+            state.email = action.payload
+        },
+        setUserId(state, action) {
+            state.id = action.payload
         },
         unAuth(state) {
+            state.email = ""
             state.isAuth = false
             state.role = "guest"
-        },
-        increment(state) {
-            state.count++
-        },
+        }
     }
 })
 
 export default usersSlice.reducer
-export const {auth, unAuth, increment, authAdmin} = usersSlice.actions
+export const {setUserId, unAuth, auth, setUserRole, setUserEmail} = usersSlice.actions

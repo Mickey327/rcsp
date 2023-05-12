@@ -6,17 +6,24 @@ import {useDispatch, useSelector} from "react-redux";
 import Button from 'react-bootstrap/Button';
 import {Container, Navbar} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
-import {ADMIN_ROUTE, CART_ROUTE, LOGIN_ROUTE} from "../../utils/consts";
+import {ADMIN_ROUTE, CART_ROUTE, FAQ_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../../utils/consts";
+import {logout} from "../../http/userAPI";
+import {unAuth} from "../../reducers/usersSlice";
 
 //TODO: Rework after backend finished, to make single method execution in dispatchers which correlates to role choosen
 function CustomNavbar() {
-    //const isAuth = useSelector(state => state.users.isAuth)
-    //const currentRole = useSelector(state => state.users.role)
+    const isAuth = useSelector(state => state.users.isAuth)
+    const currentRole = useSelector(state => state.users.role)
     const cartCount = 0
-    const currentRole = "user"
-    const isAuth = true
     const navigate = useNavigate()
-    //const dispatch = useDispatch()
+    const dispatch = useDispatch()
+
+    const userLogout = async () => {
+        const response = await logout();
+        console.log(response)
+        dispatch(unAuth())
+        navigate(LOGIN_ROUTE)
+    }
 
     return (
         <Container fluid className="header">
@@ -24,19 +31,19 @@ function CustomNavbar() {
                 <Navbar className="navbar-dark text-white py-md-2">
                     <NavbarLogo/>
                     <NavbarList>
-                        <NavbarItemList url="/" text="Главная"/>
-                        <NavbarItemList url="/faq" text="FAQ"/>
+                        <NavbarItemList key={SHOP_ROUTE} url={SHOP_ROUTE} text="Главная"/>
+                        <NavbarItemList key={FAQ_ROUTE} url={FAQ_ROUTE} text="FAQ"/>
                     </NavbarList>
                     {isAuth && currentRole === "admin" ?
                         <div>
                             <Button className="me-2" variant={"outline-light"} onClick={() => navigate(ADMIN_ROUTE)}>Панель администратора</Button>
-                            <Button variant={"outline-light"} onClick={() => navigate(LOGIN_ROUTE)}>Выйти</Button>
+                            <Button variant={"outline-light"} onClick={() => userLogout()}>Выйти</Button>
                         </div>
                         :
                         isAuth ?
                             <div>
                                 <Button className="me-2" variant={"outline-light"} onClick={() => navigate(CART_ROUTE)}>Корзина {cartCount}</Button>
-                                <Button variant={"outline-light"} onClick={() => navigate(LOGIN_ROUTE)}>Выйти</Button>
+                                <Button variant={"outline-light"} onClick={() => userLogout()}>Выйти</Button>
                             </div>
                             :
                             <div>

@@ -61,7 +61,7 @@ const FAQ = () => {
                 </p>
                 <Accordion defaultActiveKey="0">
                     {tabs.map(tab => (
-                        <AccordionItem eventKey={tab.id}>
+                        <AccordionItem key={tab.id} eventKey={tab.id}>
                             <AccordionHeader>
                                 {tab.header}
                             </AccordionHeader>

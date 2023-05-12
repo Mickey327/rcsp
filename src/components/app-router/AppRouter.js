@@ -4,10 +4,9 @@ import {adminRoutes, publicRoutes, userRoutes} from "../../routes";
 import {SHOP_ROUTE} from "../../utils/consts";
 import {useSelector} from "react-redux";
 const AppRouter = () => {
-    const role = "user"
-    const isAuth = true
-    // const isAuth = useSelector(state => state.users.isAuth)
-    // const role = useSelector(state => state.users.role)
+
+    const isAuth = useSelector(state => state.users.isAuth)
+    const role = useSelector(state => state.users.role)
 
     return (
         <Routes>

@@ -20,7 +20,10 @@ function ProductItem({product}) {
                         <span className="text-black">Цена: <span className="text-black price">{product.price} &#8381;</span> / 1 шт.</span>
                     </Card.Text>
                     <div className="d-inline mt-2">
-                        {isAuth
+                        {product.stock === 0 ?
+                            <p className="text-danger">Нет в наличии</p>
+                            :
+                            isAuth
                             ?
                             <Button variant={"outline-success"} className="me-2">Добавить в корзину</Button>
                             :

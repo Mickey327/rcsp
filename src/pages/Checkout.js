@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {SHOP_ROUTE} from "../utils/consts";
 
 const Checkout = () => {
-    const username = "Pavel"
+    const username = useSelector(state => state.users.email)
     const currentOrder = useSelector(state => state.users.currentOrder)
     const totalValue = currentOrder.cart.reduce((total, current) => {
         const currentItemValue = current.price * current.count;
