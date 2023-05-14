@@ -32,7 +32,7 @@ const Product = () => {
             searchParams.delete('fetch')
             if (product.id !== undefined) {
                 searchParams.set('productID', product.id)
-                readProductComments(searchParams).then((data) => setComments(data.comments))
+                readProductComments(searchParams).then((data) => setComments(data.comments)).catch(() => console.log("error reading product comments"))
             }
         })
     }, [id, navigate, product.id, searchParams])
@@ -40,7 +40,7 @@ const Product = () => {
     const increaseItemQuantity = (productID, orderID) => {
         updateOrderProduct(productID, orderID, 1).then((data) => {
             dispatch(setOrder(data.order))
-        })
+        }).catch(() => console.log("error increasing item quantity"))
     }
 
     const sendMessage = (productID) => {
@@ -52,8 +52,8 @@ const Product = () => {
         writeProductComment(formData, searchParams).then(() => {
             readProductComments(searchParams).then((data) =>
                 setComments(data.comments)
-            )
-        })
+            ).catch(() => console.log("error reading product comments"))
+        }).catch(() => console.log("error writing comment"))
     }
 
 

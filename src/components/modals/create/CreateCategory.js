@@ -14,7 +14,7 @@ const CreateCategory = ({show, onHide}) => {
 
     const addCategory = () => {
         createCategory({name: value}).then(() => {
-            readCategory().then(data => dispatch(setCategories(data.categories)))
+            readCategory().then(data => dispatch(setCategories(data.categories))).catch(() => console.log("error reading categories"))
             setValue('')
             onHide()
         }).catch(error => {

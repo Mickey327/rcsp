@@ -24,7 +24,7 @@ function CustomNavbar() {
             searchParams.set('fetch', 'eager')
             readOrder(searchParams).then(data => {
                 dispatch(setOrder(data.order))
-            })
+            }).catch(() => console.log("error reading current order"))
         }
     }, [dispatch, searchParams, user.order, user.role])
 

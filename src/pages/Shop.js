@@ -22,10 +22,10 @@ const Shop = () => {
     useEffect(() => {
         readCompany().then(data => {
             dispatch(setCompanies(data.companies))
-        })
+        }).catch(() => console.log("error reading companies"))
         readCategory().then(data => {
             dispatch(setCategories(data.categories))
-        })
+        }).catch(() => console.log("error reading categories"))
         readProduct(searchParams).then(data => {
             dispatch(setProducts(data.products))
         }).catch(() => {

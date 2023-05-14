@@ -17,19 +17,19 @@ const Cart = () => {
     const increaseItemQuantity = (productID, orderID) => {
         updateOrderProduct(productID, orderID, 1).then((data) => {
             dispatch(setOrder(data.order))
-        })
+        }).catch(() => console.log("error increasing item quantity"))
     }
 
     const decreaseItemQuantity = (productID, orderID) => {
         updateOrderProduct(productID, orderID, -1).then((data) => {
             dispatch(setOrder(data.order))
-        })
+        }).catch(() => console.log("error decreasing item quantity"))
     }
 
     const removeItem = (productID, orderID) => {
         removeProductOrder(productID, orderID).then((data) => {
             dispatch(setOrder(data.order))
-        })
+        }).catch(() => console.log("error removing item from cart"))
     }
 
     const productRusString = (count) => {
@@ -53,7 +53,7 @@ const Cart = () => {
                 }
 
             }
-        )
+        ).catch(() => console.log("error processing order"))
     }
 
     return (

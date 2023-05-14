@@ -4,7 +4,6 @@ import AccordionItem from "react-bootstrap/AccordionItem";
 import AccordionHeader from "react-bootstrap/AccordionHeader";
 import AccordionBody from "react-bootstrap/AccordionBody";
 
-//TODO: change theme to dark
 const FAQ = () => {
     const tabs = [
         {

@@ -42,12 +42,12 @@ const CreateProduct = ({show, onHide}) => {
         formData.append('file', file)
         formData.append('companyID', product.selectedCompany.id)
         formData.append('categoryID', product.selectedCategory.id)
-        createProduct(formData).then(() => onHide())
+        createProduct(formData).then(() => onHide()).catch(() => console.log("error creating product"))
     }
 
     useEffect(() => {
-        readCategory().then(data => dispatch(setCategories(data.categories)))
-        readCompany().then(data => dispatch(setCompanies(data.companies)))
+        readCategory().then(data => dispatch(setCategories(data.categories))).catch(() => console.log("error reading categories"))
+        readCompany().then(data => dispatch(setCompanies(data.companies))).catch(() => console.log("error reading companies"))
     }, [dispatch])
 
     return (

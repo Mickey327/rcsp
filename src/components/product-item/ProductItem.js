@@ -15,7 +15,7 @@ function ProductItem({product}) {
         console.log(user)
         updateOrderProduct(productID, orderID, 1).then((data) => {
             dispatch(setOrder(data.order))
-        })
+        }).catch(() => console.log("error updating order cart"))
     }
 
 

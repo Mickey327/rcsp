@@ -29,7 +29,7 @@ const Auth = () => {
                 dispatch(auth())
                 readOrder().then((data) => {
                     dispatch(setOrder(data.order))
-                }).finally(() => navigate(SHOP_ROUTE))
+                }).catch(() => console.log("error reading order")).finally(() => navigate(SHOP_ROUTE))
 
             }).catch((error) => {
                 setError(error.response.data.message)
