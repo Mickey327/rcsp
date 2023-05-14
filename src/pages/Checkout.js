@@ -59,7 +59,7 @@ const Checkout = () => {
                             <tbody>
                             {/*цикл по каждому предмету*/}
                             {order.order_items !== undefined && order.order_items.map(item =>
-                                <tr className="text-white">
+                                <tr key={item.product.id} className="text-white">
                                     <td className="col-3">
                                         <Image className="img-fluid w-100"
                                              src={process.env.REACT_APP_API_URL + item.product.image}
