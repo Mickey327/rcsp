@@ -3,7 +3,7 @@ import {
     ADMIN_ROUTE,
     CART_ROUTE, CHECKOUT_ROUTE,
     FAQ_ROUTE,
-    LOGIN_ROUTE,
+    LOGIN_ROUTE, NOT_FOUND_ROUTE,
     PRODUCT_ROUTE,
     REGISTRATION_ROUTE,
     SHOP_ROUTE
@@ -14,10 +14,15 @@ import FAQ from "./pages/FAQ";
 import Shop from "./pages/Shop";
 import Product from "./pages/Product";
 import Checkout from "./pages/Checkout";
+import NotFoundPage from "./pages/NotFoundPage";
 export const adminRoutes = [
     {
         path: ADMIN_ROUTE,
         Element: Admin
+    },
+    {
+        path: CHECKOUT_ROUTE,
+        Element: Checkout
     },
 ]
 export const userRoutes = [
@@ -52,4 +57,8 @@ export const publicRoutes = [
         path: PRODUCT_ROUTE + '/:id',
         Element: Product
     },
+    {
+        path: NOT_FOUND_ROUTE,
+        Element: NotFoundPage
+    }
 ]

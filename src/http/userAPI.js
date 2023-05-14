@@ -12,7 +12,7 @@ export const login = async (email, password) => {
 }
 
 export const check = async () => {
-    const {data} = await $host.get('api/user',{withCredentials: true})
+    const {data} = await $host.get('api/user', {withCredentials: true})
     return jwtDecode(data.token)
 }
 

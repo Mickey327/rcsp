@@ -1,25 +1,50 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ProductList from "../components/product-list/ProductList";
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Row, Spinner} from "react-bootstrap";
 import Categorybar from "../components/categorybar/Categorybar";
 import Companybar from "../components/companybar/Companybar";
 import {readCategory} from "../http/categoryAPI";
 import {useDispatch} from "react-redux";
-import {setCategories, setCompanies} from "../reducers/productsSlice";
+import {
+    setCategories,
+    setCompanies,
+    setProducts,
+} from "../reducers/productsSlice";
 import {readCompany} from "../http/companyAPI";
+import {readProduct} from "../http/productAPI";
+import {useSearchParams} from "react-router-dom";
 
 const Shop = () => {
     const dispatch = useDispatch()
+    const [searchParams] = useSearchParams();
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-
-        readCategory().then(data => {
-            dispatch(setCategories(data.categories))
-        })
         readCompany().then(data => {
             dispatch(setCompanies(data.companies))
         })
-    }, [dispatch])
+        readCategory().then(data => {
+            dispatch(setCategories(data.categories))
+        })
+        readProduct(searchParams).then(data => {
+            dispatch(setProducts(data.products))
+        }).catch(() => {
+            dispatch(setProducts([]))
+        }).finally(() => setLoading(false))
+    }, [dispatch, searchParams])
+
+
+
+    if (loading) {
+        return(
+        <Container fluid="xxl d-flex justify-content-center align-items-center vh-100">
+            <Spinner className="jus" animation="border" role="status" variant={"light"} size="xxl">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </Container>
+        )
+
+    }
 
     return (
         <Container fluid>

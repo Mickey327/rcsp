@@ -5,23 +5,36 @@ import './Navbar.css';
 import {useDispatch, useSelector} from "react-redux";
 import Button from 'react-bootstrap/Button';
 import {Container, Navbar} from "react-bootstrap";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {ADMIN_ROUTE, CART_ROUTE, FAQ_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../../utils/consts";
 import {logout} from "../../http/userAPI";
-import {unAuth} from "../../reducers/usersSlice";
+import {setOrder, setUserEmail, setUserId, unAuth} from "../../reducers/usersSlice";
+import {useEffect} from "react";
+import {readOrder} from "../../http/orderAPI";
 
-//TODO: Rework after backend finished, to make single method execution in dispatchers which correlates to role choosen
+
 function CustomNavbar() {
-    const isAuth = useSelector(state => state.users.isAuth)
-    const currentRole = useSelector(state => state.users.role)
-    const cartCount = 0
+    const user = useSelector(state => state.users)
+    const [searchParams] = useSearchParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        if (user.role === "user" && Object.keys(user.order).length === 0) {
+            searchParams.set('fetch', 'eager')
+            readOrder(searchParams).then(data => {
+                dispatch(setOrder(data.order))
+            })
+        }
+    }, [dispatch, searchParams, user.order, user.role])
+
     const userLogout = async () => {
-        const response = await logout();
-        console.log(response)
-        dispatch(unAuth())
+        logout().then(() => {
+            dispatch(setUserId(0))
+            dispatch(setUserEmail(''))
+            dispatch(setOrder({}))
+            dispatch(unAuth())
+        })
         navigate(LOGIN_ROUTE)
     }
 
@@ -34,15 +47,15 @@ function CustomNavbar() {
                         <NavbarItemList key={SHOP_ROUTE} url={SHOP_ROUTE} text="Главная"/>
                         <NavbarItemList key={FAQ_ROUTE} url={FAQ_ROUTE} text="FAQ"/>
                     </NavbarList>
-                    {isAuth && currentRole === "admin" ?
+                    {user.isAuth && user.role === "admin" ?
                         <div>
                             <Button className="me-2" variant={"outline-light"} onClick={() => navigate(ADMIN_ROUTE)}>Панель администратора</Button>
                             <Button variant={"outline-light"} onClick={() => userLogout()}>Выйти</Button>
                         </div>
                         :
-                        isAuth ?
+                        user.isAuth ?
                             <div>
-                                <Button className="me-2" variant={"outline-light"} onClick={() => navigate(CART_ROUTE)}>Корзина {cartCount}</Button>
+                                <Button className="me-2" variant={"outline-light"} onClick={() => navigate(CART_ROUTE)}>Корзина {user.order.count}</Button>
                                 <Button variant={"outline-light"} onClick={() => userLogout()}>Выйти</Button>
                             </div>
                             :

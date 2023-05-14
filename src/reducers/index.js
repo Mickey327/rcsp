@@ -4,7 +4,7 @@ import productsSlice from "./productsSlice";
 
 const rootReducer = combineReducers({
     users: usersSlice,
-    products: productsSlice,
+    product: productsSlice,
 })
 
 export const store = configureStore({

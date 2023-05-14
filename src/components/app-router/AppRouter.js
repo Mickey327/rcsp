@@ -1,7 +1,7 @@
 import React from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import {adminRoutes, publicRoutes, userRoutes} from "../../routes";
-import {SHOP_ROUTE} from "../../utils/consts";
+import {NOT_FOUND_ROUTE} from "../../utils/consts";
 import {useSelector} from "react-redux";
 const AppRouter = () => {
 
@@ -19,7 +19,7 @@ const AppRouter = () => {
             {publicRoutes.map(({path, Element}) =>
                 <Route key={path} path={path} element={<Element/>}></Route>
             )}
-            <Route path="*" element={<Navigate to={SHOP_ROUTE} replace />} />
+            <Route path="*" element={<Navigate to={NOT_FOUND_ROUTE} replace />} />
         </Routes>
     );
 };
