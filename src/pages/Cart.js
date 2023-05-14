@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {CHECKOUT_ROUTE, SHOP_ROUTE} from "../utils/consts";
-import {processOrder, removeProductOrder, updateOrderProduct} from "../http/orderAPI";
+import {processOrder, readOrder, removeProductOrder, updateOrderProduct} from "../http/orderAPI";
 import {setOrder} from "../reducers/usersSlice";
 
 
@@ -45,6 +45,9 @@ const Cart = () => {
     const clickProcessOrder = () => {
         processOrder().then(r => {
                 console.log(r)
+                readOrder().then((data) => {
+                    dispatch(setOrder(data.order))
+                }).catch(() => console.log("error reading order"))
                 if (r.order.id !== undefined) {
                     navigate({
                         pathname: CHECKOUT_ROUTE,
